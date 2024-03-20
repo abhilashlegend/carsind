@@ -6,3 +6,5 @@ const siteController = require('../controllers/site');
 
 router.get("/", siteController.home);   
 
+module.exports = router;
+
