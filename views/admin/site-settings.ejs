@@ -1,0 +1,67 @@
+<%- include('../includes/admin/header.ejs') %>
+
+<%- include('../includes/admin/sidebar.ejs') %>
+<div class="main-wrapper">
+
+    <%- include('../includes/admin/navigation.ejs') %>
+
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+        <div class="container">
+          <h2 class="main-title">Site Settings</h2>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-4">
+                <form method="post" action="/admin/site-settings">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title </label>
+                        <input type="text" class="form-control" id="title" required name="title" value="<%= sitedata.title %>" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tagline" class="form-label">Tag line</label>
+                        <input type="text" class="form-control" id="tagline" name="tagline" value="<%= sitedata.tagline %>" />
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label"><strong>Top Bar</strong></div>
+                        <div class="form-check form-check-inline cind-frm-chk">
+                            <input required type="radio" class="form-check-input" id="showtopbar" value="true" name="showtopbar" <%= sitedata.showtopbar ? 'checked' : '' %> />
+                            <label for="showtopbar" class="form-check-label">Show</label>
+                        </div>
+                        <div class="form-check form-check-inline cind-frm-chk">
+                            <input required type="radio" class="form-check-input" id="hidetopbar" value="false" name="showtopbar" <%= !sitedata.showtopbar ? 'checked' : '' %> />
+                            <label for="hidetopbar" class="form-check-label">Hide</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label"><strong>Carousel</strong></div>
+                        <div class="form-check form-check-inline cind-frm-chk">
+                            <input required type="radio" class="form-check-input" id="showcarousel" value="true" name="showcarousel" <%= sitedata.showcarousel ? 'checked' : '' %> />
+                            <label for="showcarousel" class="form-check-label">Show</label>
+                        </div>
+                        <div class="form-check form-check-inline cind-frm-chk">
+                            <input required type="radio" class="form-check-input" id="hidecarousel" value="false" name="showcarousel" <%= !sitedata.showcarousel ? 'checked' : '' %>  />
+                            <label for="hidecarousel" class="form-check-label">Hide</label>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="mb-3">
+                        <input type="hidden" name="id" id="id" value="<%= sitedata._id %>" />
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+
+                        <a type="button" class="btn btn-secondary" href="/admin/dashboard">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+<%- include('../includes/admin/footer.ejs') %>    
