@@ -1,4 +1,5 @@
 const Site = require('../models/site');
+const Brand = require('../models/brand');
 
 exports.dashboard = (req, res, next) => {
     res.render("./admin/dashboard.ejs", {pageTitle: "Dashboard"});
@@ -45,8 +46,13 @@ exports.saveSiteSettings = (req, res, next) => {
             console.error(error)
         })
     
-    }
+    }   
+}
 
-    
-    
+exports.brands = (req, res, next) => {
+    Brand.find().then(brands => {
+        res.render("./admin/brands.ejs", {pageTitle: "Brands", brands: brands})
+    }).catch(error => {
+        console.error(error);
+    })
 }

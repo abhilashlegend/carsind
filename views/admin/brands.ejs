@@ -1,0 +1,56 @@
+<%- include('../includes/admin/header.ejs') %>
+
+<%- include('../includes/admin/sidebar.ejs') %>
+<div class="main-wrapper">
+
+    <%- include('../includes/admin/navigation.ejs') %>
+
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+        <div class="container">
+          <h2 class="main-title">Brands</h2>
+
+          <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#Id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Logo</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(brands.length > 0){ %>
+                            <% for(let brand of brands) { %>
+                                <tr class="align-middle">
+                                    <td><%= quiz._id %></td>
+                                    <td><a href="/admin/brand/<%= brand._id %>"><%= brand.title %></a></td>
+                                    <td><%= brand.logo %></td>
+                                    <td><%= brand.description %></td>
+                                    <td>
+                                        <a class="edit-icon" href="/admin/edit-brand/<%= brand._id %>" aria-label="edit brand"><i class="bi bi-pencil-square"></i></a>
+
+                                        <a class="delete-icon" href="/admin/delete-brand/<%= brand._id %>" aria-label="delete brand">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>       
+                            <% } %>
+                        <% } else {  %>
+                            <tr>
+                                <td colspan="9">No Records found</td>
+                            </tr>
+                        <% } %>
+                        
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+<%- include('../includes/admin/footer.ejs') %>    

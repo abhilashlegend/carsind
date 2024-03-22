@@ -8,6 +8,8 @@ router.get("/site-settings", adminController.siteSettings);
 
 router.post('/site-settings', adminController.saveSiteSettings);
 
+router.get("/brands", adminController.brands);
+
 module.exports = router;
 
 
