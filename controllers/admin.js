@@ -2,12 +2,12 @@ const Site = require('../models/site');
 const Brand = require('../models/brand');
 
 exports.dashboard = (req, res, next) => {
-    res.render("./admin/dashboard.ejs", {pageTitle: "Dashboard"});
+    res.render("./admin/dashboard.ejs", {pageTitle: "Dashboard", path: req.path });
 }
 
 exports.siteSettings = (req, res, next) => {
     Site.find().then(sitedata => {
-        res.render("./admin/site-settings.ejs", {pageTitle: "Site Settings", sitedata: sitedata[0] });
+        res.render("./admin/site-settings.ejs", {pageTitle: "Site Settings", path: req.path, sitedata: sitedata[0] });
     })
     
 }
@@ -51,8 +51,29 @@ exports.saveSiteSettings = (req, res, next) => {
 
 exports.brands = (req, res, next) => {
     Brand.find().then(brands => {
-        res.render("./admin/brands.ejs", {pageTitle: "Brands", brands: brands})
+        res.render("./admin/brands.ejs", {pageTitle: "Brands", brands: brands, path: req.path})
     }).catch(error => {
         console.error(error);
     })
+}
+
+exports.addBrand = (req, res, next) => {
+    res.render("./admin/add-brand.ejs", {pageTitle: "Add Brand", path: req.path})
+}
+
+exports.saveBrand = (req, res, next) => {
+    const title = req.body.title;
+    const logo = req.body.logo;
+    const description = req.body.description;
+
+    const brand = new Brand({
+        title: title,
+        description: description,
+        logo: logo
+    });
+    brand.save().then(result => {
+        res.redirect("/admin/brands");
+    }).catch(error => {
+        console.error(error);
+    });
 }

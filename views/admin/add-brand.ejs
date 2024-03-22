@@ -1,0 +1,46 @@
+<%- include('../includes/admin/header.ejs') %>
+
+<%- include('../includes/admin/sidebar.ejs') %>
+<div class="main-wrapper">
+
+    <%- include('../includes/admin/navigation.ejs') %>
+
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+        <div class="container">
+          <h2 class="main-title">Add Brand</h2>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-4">
+                <form method="post" action="/admin/brand/add-brand">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title </label>
+                        <input type="text" class="form-control" id="title" required name="title"  />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="logo" class="form-label">Logo</label>
+                        <input type="text" class="form-control" id="logo" name="logo"  />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="description" class="form-control" id="description" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+
+                        <a type="button" class="btn btn-secondary" href="/admin/dashboard">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+<%- include('../includes/admin/footer.ejs') %>    

@@ -10,6 +10,10 @@ router.post('/site-settings', adminController.saveSiteSettings);
 
 router.get("/brands", adminController.brands);
 
+router.get("/brand/add-brand", adminController.addBrand);
+
+router.post("/brand/add-brand", adminController.saveBrand);
+
 module.exports = router;
 
 
