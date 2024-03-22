@@ -77,3 +77,11 @@ exports.saveBrand = (req, res, next) => {
         console.error(error);
     });
 }
+
+exports.editBrand = (req, res, next) => {
+    Brand.findById(req.params.id).then(brand => {
+        res.render("./admin/edit-brand.ejs", {pageTitle: "Edit Brand", path: req.path, brand: brand });
+    }).catch(error => {
+        console.error(error);
+    })
+}
