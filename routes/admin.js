@@ -16,6 +16,8 @@ router.post("/brand/add-brand", adminController.saveBrand);
 
 router.get("/brand/edit-brand/:id", adminController.editBrand);
 
+router.post("/brand/edit-brand", adminController.updateBrand);
+
 module.exports = router;
 
 

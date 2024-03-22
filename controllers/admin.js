@@ -85,3 +85,21 @@ exports.editBrand = (req, res, next) => {
         console.error(error);
     })
 }
+
+exports.updateBrand = (req, res, next) => {
+    const title = req.body.title;
+    const description = req.body.description;
+    const logo = req.body.logo;
+    const id = req.body.id;
+
+    Brand.findById(id).then(brand => {
+        brand.title = title;
+        brand.description = description;
+        brand.logo = logo;
+        return brand.save()
+    }).then(result => {
+        res.redirect("/admin/brands");
+    }).catch(error => {
+        console.error(error);
+    })
+}
