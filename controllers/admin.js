@@ -1,5 +1,6 @@
 const Site = require('../models/site');
 const Brand = require('../models/brand');
+const User = require("../models/user");
 
 exports.dashboard = (req, res, next) => {
     res.render("./admin/dashboard.ejs", {pageTitle: "Dashboard", path: req.path });
@@ -107,6 +108,14 @@ exports.updateBrand = (req, res, next) => {
 exports.deleteBrand = (req, res, next) => {
     Brand.findByIdAndDelete(req.params.id).then(result => {
         res.redirect("/admin/brands");
+    }).catch(error => {
+        console.error(error);
+    })
+}
+
+exports.users = (req, res, next) => {
+    User.find().then(users => {
+        res.render("./admin/users.ejs", { pageTitle: "Users", path: req.path, users: users })
     }).catch(error => {
         console.error(error);
     })

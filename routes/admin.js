@@ -20,6 +20,8 @@ router.post("/brand/edit-brand", adminController.updateBrand);
 
 router.get("/brand/delete-brand/:id", adminController.deleteBrand );
 
+router.get("/users", adminController.users);
+
 module.exports = router;
 
 

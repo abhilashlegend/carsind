@@ -1,0 +1,68 @@
+<%- include('../includes/admin/header.ejs') %>
+
+<%- include('../includes/admin/sidebar.ejs') %>
+<div class="main-wrapper">
+
+    <%- include('../includes/admin/navigation.ejs') %>
+
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="main-title">Users</h2>
+                </div>
+                <div class="col-md-6 d-flex flex-row-reverse">
+                    <div>
+                        <a href="/admin/users/add-user" class="btn btn-success">Add <i class="bi bi-plus"></i></a>
+                    </div>
+                </div>
+            </div>    
+          
+
+          <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#Id</th>
+                            <th scope="col">Fullname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(users.length > 0){ %>
+                            <% for(let user of users) { %>
+                                <tr class="align-middle">
+                                    <td><%= user._id %></td>
+                                    <td><%= user.fullname %></td>
+                                    <td><%= user.email %></td>
+                                    <td><%= user.phone %></td>
+                                    <td><%= user.password %></td>
+                                    <td>
+                                        <a class="table-icon edit-icon" href="/admin/user/edit-user/<%= user._id %>" aria-label="edit user"><i class="bi bi-pencil-square"></i></a>
+
+                                        <a class="table-icon delete-icon" href="/admin/user/delete-user/<%= user._id %>" aria-label="delete user">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>       
+                            <% } %>
+                        <% } else {  %>
+                            <tr>
+                                <td colspan="9">No Records found</td>
+                            </tr>
+                        <% } %>
+                        
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+<%- include('../includes/admin/footer.ejs') %>    
