@@ -103,3 +103,11 @@ exports.updateBrand = (req, res, next) => {
         console.error(error);
     })
 }
+
+exports.deleteBrand = (req, res, next) => {
+    Brand.findByIdAndDelete(req.params.id).then(result => {
+        res.redirect("/admin/brands");
+    }).catch(error => {
+        console.error(error);
+    })
+}
