@@ -30,6 +30,8 @@ router.get("/users/edit-user/:id", adminController.editUser);
 
 router.post("/users/edit-user", adminController.updateUser);
 
+router.get("/users/delete-user/:id", adminController.deleteUser);
+
 module.exports = router;
 
 

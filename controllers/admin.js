@@ -173,3 +173,11 @@ exports.updateUser = (req, res, next) => {
         console.error(error);
     })
 }
+
+exports.deleteUser = (req, res, next) => {
+    User.findByIdAndDelete(req.params.id).then(result => {
+        res.redirect("/admin/users");
+    }).catch(error => {
+        console.error(error);
+    })
+}
