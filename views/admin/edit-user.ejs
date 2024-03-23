@@ -1,0 +1,56 @@
+<%- include('../includes/admin/header.ejs') %>
+
+<%- include('../includes/admin/sidebar.ejs') %>
+<div class="main-wrapper">
+
+    <%- include('../includes/admin/navigation.ejs') %>
+
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+        <div class="container">
+          <h2 class="main-title">Edit User</h2>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-4">
+                <form method="post" action="/admin/users/edit-user">
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Fullname </label>
+                        <input type="text" class="form-control" value="<%= user.fullname %>" id="fullname" required name="fullname"  />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" value="<%= user.email %>" id="email" name="email" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="phone" value="<%= user.phone %>" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" value="<%= user.password %>" id="password" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cpassword" class="form-label">Confirm Password</label>
+                        <input type="password" name="cpassword" class="form-control" id="cpassword" />
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="hidden" name="id" id="id" value="<%= user._id %>" />
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+
+                        <a type="button" class="btn btn-secondary" href="/admin/users">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+<%- include('../includes/admin/footer.ejs') %>    

@@ -24,6 +24,12 @@ router.get("/users", adminController.users);
 
 router.get("/users/add-user", adminController.addUser);
 
+router.post("/users/add-user", adminController.saveUser);
+
+router.get("/users/edit-user/:id", adminController.editUser);
+
+router.post("/users/edit-user", adminController.updateUser);
+
 module.exports = router;
 
 

@@ -124,3 +124,52 @@ exports.users = (req, res, next) => {
 exports.addUser = (req, res, next) => {
     res.render("./admin/add-user.ejs", { pageTitle: "Add User", path: req.path });
 }
+
+exports.saveUser = (req, res, next) =>{
+    const fullname = req.body.fullname;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const password = req.body.password;
+
+    const user = new User({
+        fullname: fullname,
+        email: email,
+        phone: phone,
+        password: password
+    });
+
+    user.save().then(result => {
+        res.redirect("/admin/users");
+    }).catch(error => {
+        console.error(error);
+    })
+}
+
+exports.editUser = (req, res, next) => {
+    User.findById(req.params.id).then(user => {
+        res.render("./admin/edit-user.ejs", { pageTitle: "Edit User", path: req.path, user: user })
+    }).catch(error => {
+        console.error(error);
+    })
+}
+
+exports.updateUser = (req, res, next) => {
+    const fullname = req.body.fullname;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const password = req.body.password;
+    const id = req.body.id;
+
+    User.findById(id).then(user => {
+        user.fullname = fullname;
+        user.email = email;
+        user.phone = phone;
+        user.password = password;
+
+        return user.save();
+    }).then(result => {
+        res.redirect("/admin/users");
+    }).catch(error => {
+        console.error(error);
+    })
+}
