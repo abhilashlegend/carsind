@@ -120,3 +120,7 @@ exports.users = (req, res, next) => {
         console.error(error);
     })
 }
+
+exports.addUser = (req, res, next) => {
+    res.render("./admin/add-user.ejs", { pageTitle: "Add User", path: req.path });
+}

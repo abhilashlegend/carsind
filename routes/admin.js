@@ -22,6 +22,8 @@ router.get("/brand/delete-brand/:id", adminController.deleteBrand );
 
 router.get("/users", adminController.users);
 
+router.get("/users/add-user", adminController.addUser);
+
 module.exports = router;
 
 
